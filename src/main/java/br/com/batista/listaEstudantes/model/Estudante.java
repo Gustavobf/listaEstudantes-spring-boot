@@ -18,9 +18,14 @@ public class Estudante {
 	public Estudante() {
 	}
 
-	public Estudante(String nome, String matricula) {
+	public Estudante(String nome, String email, String matricula) {
 		this.nome = nome;
+		this.email = email;
 		this.matricula = matricula;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
 	public String getNome() {
@@ -45,6 +50,11 @@ public class Estudante {
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
+	}
+
+	@Override
+	public String toString() {
+		return "Estudante [id=" + id + ", nome=" + nome + ", email=" + email + ", matricula=" + matricula + "]";
 	}
 
 }
