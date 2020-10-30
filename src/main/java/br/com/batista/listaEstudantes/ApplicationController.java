@@ -36,20 +36,52 @@ public class ApplicationController {
 		return "formConvidar";
 	}
 
+	@RequestMapping("/formAtualizar")
+	public String formAtualizar(@RequestParam("id") Long id, Model model) {
+
+		Estudante estudante = service.obterPeloId(id);
+
+		model.addAttribute("estudante", estudante);
+
+		return "formAtualizar";
+	}
+
 	@RequestMapping(value = "salvar", method = RequestMethod.POST)
 	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email,
 			@RequestParam("matricula") String matricula, Model model) {
-		
+
 		Estudante novoEstudante = new Estudante(nome, email, matricula);
-		
+
 		service.salvar(novoEstudante);
-		
+
 		Iterable<Estudante> estudantes = service.obterTodos();
 
 		model.addAttribute("estudantes", estudantes);
 
 		return "listaEstudantes";
 
+	}
+
+//	@RequestMapping(value = "atualizar", method = RequestMethod.PUT)
+//	public String atualizar(@RequestParam("nome") String nome, @RequestParam("email") String email,
+//			@RequestParam("matricula") String matricula, Model model) {
+//		
+//		Estudante estudante = new Estudante(nome, email, matricula);
+//
+//		return "listaEstudantes";
+//
+//	}
+
+	@RequestMapping("/deletar")
+	public String deletar(@RequestParam("id") Long id, Model model) {
+
+		service.deletar(id);
+
+		Iterable<Estudante> estudantes = service.obterTodos();
+
+		model.addAttribute("estudantes", estudantes);
+
+		return "listaEstudantes";
 	}
 
 }
