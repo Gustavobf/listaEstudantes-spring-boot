@@ -13,7 +13,7 @@
 
 	<div class="container">
 
-		<form action="atualizar" method="put">
+		<form action="atualizar" method="post">
 			<div class="form-group mt-3">
 				<label for="nome">Nome Completo</label> <input type="text"
 					class="form-control" id="nome" name="nome" th:value="*{estudante.nome}">
@@ -28,6 +28,9 @@
 				<label for="matricula">Matrícula</label> <input
 					type="text" class="form-control" id="matricula" name="matricula" th:value="*{estudante.matricula}">
 			</div>
+			
+			 <input type="hidden" id="id" name="id" th:value="*{estudante.id}">
+			
 			
 			<button type="submit" class="btn btn-primary">Convidar</button>
 		</form>

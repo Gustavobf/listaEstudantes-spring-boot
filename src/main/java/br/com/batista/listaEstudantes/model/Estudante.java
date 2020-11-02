@@ -24,10 +24,17 @@ public class Estudante {
 		this.matricula = matricula;
 	}
 	
+	public Estudante(Long id, String nome, String email, String matricula) {
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.matricula = matricula;
+	}
+	
 	public Long getId() {
 		return id;
 	}
-
+	
 	public String getNome() {
 		return nome;
 	}

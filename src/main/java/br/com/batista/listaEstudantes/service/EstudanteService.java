@@ -20,21 +20,13 @@ public class EstudanteService {
 		repository.deleteById(id);
 	}
 
-//	public void atualizar(Estudante estudante) {
-//		Optional<Estudante> estudanteAntigo = repository.findById(estudante.getId());
-//		repository.save(estudante);
-//	}
+	public void atualizar(Estudante estudante) {
+		repository.save(estudante);
+	}
 
 	public Estudante obterPeloId(Long id) {
-		Iterable<Estudante> lista = repository.findAll();
-
-		for (Estudante estudante : lista) {
-			if (estudante.getId() == id) {
-				return estudante;
-			}
-		}
-		return null;
-
+		Estudante estudante = repository.findById(id).get();
+		return estudante;
 	}
 
 	public Iterable<Estudante> obterTodos() {

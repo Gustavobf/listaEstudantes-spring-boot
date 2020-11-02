@@ -62,15 +62,20 @@ public class ApplicationController {
 
 	}
 
-//	@RequestMapping(value = "atualizar", method = RequestMethod.PUT)
-//	public String atualizar(@RequestParam("nome") String nome, @RequestParam("email") String email,
-//			@RequestParam("matricula") String matricula, Model model) {
-//		
-//		Estudante estudante = new Estudante(nome, email, matricula);
-//
-//		return "listaEstudantes";
-//
-//	}
+	@RequestMapping("/atualizar")
+	public String atualizar(@RequestParam("id") Long id, @RequestParam("nome") String nome, @RequestParam("email") String email,
+			@RequestParam("matricula") String matricula, Model model) {
+		
+		Estudante estudante = new Estudante(id, nome, email, matricula);
+		service.atualizar(estudante);
+
+		Iterable<Estudante> estudantes = service.obterTodos();
+
+		model.addAttribute("estudantes", estudantes);
+		
+		return "listaEstudantes";
+
+	}
 
 	@RequestMapping("/deletar")
 	public String deletar(@RequestParam("id") Long id, Model model) {
