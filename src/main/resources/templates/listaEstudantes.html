@@ -14,7 +14,7 @@
 	<div class="container">
 		<table class="table table-hover">
 			<thead>
-				<tr>
+				<tr class="text-center">
 					<th scope="col">Id</th>
 					<th scope="col">Nome</th>
 					<th scope="col">Email</th>
@@ -23,18 +23,24 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each = "estudante : ${estudantes}">
-					<th scope="row"><span th:text = "${estudante.id}"></span></th>
-					<td><span th:text = "${estudante.nome}"></span></td>
-					<td><span th:text = "${estudante.email}"></span></td>
-					<td><span th:text = "${estudante.matricula}"></span></td>
-					<td><a th:href="@{deletar(id=${estudante.id})}">del</td>
-					<td><a th:href="@{formAtualizar(id=${estudante.id})}">att</td>
+				<tr class="text-center" th:each = "estudante : ${estudantes}">
+					<th class="align-middle" scope="row"><span th:text = "${estudante.id}"></span></th>
+					<td class="align-middle"><span th:text = "${estudante.nome}"></span></td>
+					<td class="align-middle"><span th:text = "${estudante.email}"></span></td>
+					<td class="align-middle"><span th:text = "${estudante.matricula}"></span></td>
+					<td>
+					<div class="d-inline-block m-1 btn btn-info"><a class="text-reset text-decoration-none" th:href="@{formAtualizar(id=${estudante.id})}"/>Atualizar</div>
+					<div class="d-inline-block m-1 btn btn-danger"><a class="text-reset text-decoration-none" th:href="@{deletar(id=${estudante.id})}"/>Deletar</div>
+					</td>
 				</tr>
 			</tbody>
 		</table>
 		
-		<a href="/convidar">Convidar</a>
+		<div class="text-center">
+			<button class="btn btn-primary">
+				<a class="text-reset text-decoration-none" href="/convidar">Novo Convite</a>
+			</button>
+		</div>
 		
 	</div>
 
